@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map with Leaflet</title>
+    
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Style for the map container -->
+    <style>
+        #map {
+            height: 500px; /* Set the height of the map */
+            width: 100%;    /* Set the width of the map */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to My Interactive Map</h1>
+<p>This webpage was created on <script>document.write(new Date().toLocaleDateString());</script>. Below is an interactive map created using Leaflet.</p>
+
+<!-- Map container -->
+<div id="map"></div>
+
+<script>
+    // Initialize the map with São Paulo coordinates
+    var map = L.map('map').setView([-23.550520, -46.633308], 10); // São Paulo coordinates
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a marker with a popup for São Paulo
+    L.marker([-23.550520, -46.633308]).addTo(map)
+        .bindPopup('Hello from São Paulo!')
+        .openPopup();
+</script>
+
+</body>
+</html>
